@@ -14,9 +14,9 @@ library for better AMD support.
 
 Support provided. Microjs can be used with or without RequireJS.
 
-## Documentation
+## Examples
 
-The functions are pretty self-evident. Here are a few exampls.
+The code is pretty simple intent-wise. Here are a few examples.
 
 ### find
 
