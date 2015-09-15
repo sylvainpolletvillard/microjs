@@ -1,7 +1,9 @@
 # Microjs
 
 Microjs is inspired by the many libraries that demonstrate jQuery is no longer
-necessary. Microjs is the primary/sole javascript library behind our
+necessary. Right now, this means targeting IE9+.
+
+Microjs is the primary/sole javascript library behind our
 [Thinkful](https://thinkful.me) and [Shopful](https://shopful.me) projects.
 
 ## AJAX
