@@ -26,10 +26,20 @@ THE SOFTWARE.*/
     else
         factory();
 })(function() {
-    var u = {};
+    var U = [];
+    
+    Object.keys(HTMLElement.prototype).forEach(function(prop){
+        U[prop] = function(){ return this[0][prop].apply(this[0], arguments); }
+    });
+    
+    U.find = function(s){ 
+        var u = Object.create(U);
+        U.push.apply(u, document.querySelectorAll("div"))
+        return u;
+    };
 
     // Source: http://stackoverflow.com/a/901144/1507139
-    u.getParameter = function(name, url) {
+    U.getParameter = function(name, url) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
             search = url || location.search;
@@ -37,28 +47,11 @@ THE SOFTWARE.*/
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     };
 
-    u.find = document.querySelector.bind(document);
-    u.findAll = document.querySelectorAll.bind(document);
-
-    HTMLElement.prototype.find = function(s) {
-        return this.querySelector(s);
-    };
-
-    HTMLElement.prototype.findAll = function(s) {
-        return this.querySelectorAll(s);
-    };
-
-    HTMLElement.prototype.addClass = function(c) {
-        this.classList.add(c);
-    };
-
-    HTMLElement.prototype.removeClass = function(c) {
-        this.classList.remove(c);
-    };
-
-    HTMLElement.prototype.toggleClass = function(c) {
-        this.classList.toggle(c);
-    };
+    
+        
+    U.addClass = function(c) { this.classList.add(c); return this };
+    U.removeClass = function(c) { this.classList.remove(c); return this };
+    U.toggleClass = function(c) { this.classList.toggle(c); return this };
 
     HTMLFormElement.prototype.serialize = function() {
         var children = this.children;
@@ -79,13 +72,5 @@ THE SOFTWARE.*/
         return formData;
     };
 
-    HTMLCollection.prototype.toArray = function() {
-       var arr = [];
-       for (var i = 0; i < this.length; i++) arr.push(this.item(i));
-       return arr;
-    };
-
-    NodeList.prototype.toArray = HTMLCollection.prototype.toArray;
-
-    return u;
+    return U;
 });
