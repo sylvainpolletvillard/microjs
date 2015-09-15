@@ -1,8 +1,8 @@
 # Microjs
 
 Microjs is inspired by the many libraries that demonstrate jQuery is no longer
-necessary. Microjs supports our [Thinkful](https://thinkful.me) and
-[Shopful](https://shopful.me) projects.
+necessary. Microjs is the primary/sole javascript library behind our
+[Thinkful](https://thinkful.me) and [Shopful](https://shopful.me) projects.
 
 ## AJAX
 
@@ -71,6 +71,11 @@ u.findAll("div").toArray().forEach(function(div) {
     div.onclick = myAction;
 });
 ```
+
+## Users
+
+- [Shopful](https://shopful.me)
+- [Thinkful](https://thinkful.me)
 
 ## Further reading
 
